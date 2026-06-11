@@ -1,0 +1,1 @@
+If the repository includes customer-owned items or vendored/copied third-party code or assets, create ATTRIBUTION.md in the repository root. For each item, document its name, source, author or owner, license, and use in the product.
