@@ -85,17 +85,17 @@ We did mot found any additional links, which should be added to config, so we pr
 ### Coverage
 
 #### User stories covered by the prototype
-**US-04: Project information and collaborator page**
+**US-10: Project information and collaborator page**
 - Description: Page with information about the GDE project and resources for collaborators to understand our mission and partnership opportunities.
 - Prototype artifacts:
   - Welcome page (`welcome_page.jpg`) — contains project overview and calls-to-action for collaborators
-- User story link: [US-04](https://github.com/Son-Go/SWP_team30/blob/main/reports/week2/user-stories.md#us-04-project-information-and-collaborator-page)
+- User story link: [US-10](https://github.com/Son-Go/SWP_team30/blob/main/reports/week2/user-stories.md#us-10-informative-welcome-page)
 
 Link to [mvp-v0-report.md](https://github.com/Son-Go/SWP_team30/blob/e041ee9583e1cf413d6561e086546e956eeb62ad/reports/week2/mvp-v0-report.md)
 
 The MVP v0 establishes the foundational infrastructure for the GDE website, including:
 - Basic project structure and routing
-- Initial page layouts that support US-04 (project information display)
+- Initial page layouts that support US-10 (project information display)
 
 While MVP v0 does not implement complete user stories, it provides the technical foundation required for future feature development.
 
