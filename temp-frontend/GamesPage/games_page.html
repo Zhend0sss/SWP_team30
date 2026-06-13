@@ -1,0 +1,513 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Games Catalog | NEON CLUB</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&amp;family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#2c0051",
+                    "outline-variant": "#4c4354",
+                    "primary-fixed": "#efdbff",
+                    "surface-container-highest": "#353438",
+                    "surface-container-lowest": "#0e0e11",
+                    "on-error": "#690005",
+                    "surface-container": "#1f1f22",
+                    "secondary-container": "#2ff801",
+                    "on-secondary": "#053900",
+                    "inverse-surface": "#e4e1e6",
+                    "tertiary-fixed": "#7df4ff",
+                    "secondary-fixed-dim": "#2ae500",
+                    "on-primary": "#480081",
+                    "tertiary-container": "#006f76",
+                    "secondary-fixed": "#79ff5b",
+                    "on-secondary-container": "#0f6d00",
+                    "on-primary-fixed-variant": "#6700b5",
+                    "inverse-on-surface": "#303033",
+                    "surface-tint": "#dcb8ff",
+                    "on-surface": "#e4e1e6",
+                    "on-secondary-fixed": "#022100",
+                    "background": "#131316",
+                    "on-tertiary-container": "#75f4ff",
+                    "primary-container": "#8a2be2",
+                    "on-surface-variant": "#cfc2d7",
+                    "on-primary-container": "#eed9ff",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#8422dc",
+                    "surface-variant": "#353438",
+                    "surface-container-high": "#2a2a2d",
+                    "tertiary": "#00dbe9",
+                    "surface": "#131316",
+                    "surface-dim": "#131316",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#00363a",
+                    "error-container": "#93000a",
+                    "primary-fixed-dim": "#dcb8ff",
+                    "primary": "#dcb8ff",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "outline": "#988ca0",
+                    "secondary": "#d7ffc5",
+                    "surface-bright": "#39393c",
+                    "on-secondary-fixed-variant": "#095300",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "surface-container-low": "#1b1b1e",
+                    "on-tertiary-fixed": "#002022",
+                    "on-background": "#e4e1e6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "48px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Sora"],
+                    "headline-xl": ["Sora"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Sora"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e4e1e6;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(22, 22, 26, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: #dcb8ff;
+            box-shadow: 0 0 20px rgba(220, 184, 255, 0.2);
+            transform: translateY(-4px);
+        }
+        .pulsing-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(47, 248, 1, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(47, 248, 1, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(47, 248, 1, 0); }
+        }
+        .neon-gradient-btn {
+            background: linear-gradient(135deg, #8a2be2 0%, #00dbe9 100%);
+            transition: all 0.3s ease;
+        }
+        .neon-gradient-btn:hover {
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+            filter: brightness(1.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #131316;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4c4354;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased custom-scrollbar flex flex-col" style="width: 1280px; margin: 0px auto; position: relative;">
+<!-- Navigation Shell -->
+<nav class="fixed top-0 z-50 w-full bg-background/80 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]" style="width: 1280px; left: 50%; transform: translateX(-50%);">
+<div class="max-w-container-max mx-auto px-margin-desktop py-4 flex justify-between items-center">
+<div class="flex items-center gap-base">
+<div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary neon-glow-purple">
+<img alt="GD Evenings Club Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZyUGzcrZvQ4W7euRMhEhWH4qSdCmiKSjGgIDY00aGDIsSKWHq74OXhv13YNN-U0jdduKFfgheoeuPIc6rgMU59DuXPDA0OtcYNd3gQOU6ayBforqZpdzfjuWSle9--ez1dMNJqvwoSsiDW4LnjhxJ67JcXIpxxxt06WJtPkamS4CKj_RHDzXxY7zwSHMEreLe1xveJkDecfcL8uW7jCQq6ijhnjB4vTw5SP0kTWFsS72cFgZHV_4Bcy_zINfsuJUHHR5apK70bpg">
+</div>
+<span class="font-headline-lg text-headline-lg font-black text-primary drop-shadow-[0_0_10px_rgba(220,184,255,0.5)] hidden md:block">GD Evenings</span>
+</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">About Club</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-bold font-body-md text-body-md transition-all duration-300" href="#">Games</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Events</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Forum</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Store</a>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="hidden lg:flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-colors" data-icon="person_pin">person_pin</span>
+</div>
+<button class="bg-primary text-on-primary px-8 py-2 rounded-full font-bold hover:scale-105 active:scale-95 transition-all duration-300 neon-glow-purple">
+                    Login
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Content Canvas -->
+<main class="pt-32 px-margin-desktop max-w-container-max mx-auto relative overflow-hidden">
+<!-- Animated Atmosphere Background -->
+<!-- Header Section -->
+<header class="mb-12 relative z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<span class="w-12 h-[2px] bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Library Access</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl md:text-headline-xl text-on-surface">Games <span class="text-primary italic">Catalog</span></h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl">Dive into the curated collection of GDE Evenings. From pixelated classics to high-octane competitive shooters.</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="px-6 py-2 rounded-full glass-card text-primary border-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filter
+                    </button>
+<button class="px-6 py-2 rounded-full glass-card text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">sort</span>
+                        Trending
+                    </button>
+</div>
+</div>
+<!-- Categories -->
+<div class="mt-12 flex flex-wrap gap-4 overflow-x-auto pb-4 no-scrollbar">
+<button class="px-8 py-3 rounded-full bg-primary-container text-on-primary-container font-bold text-body-md transition-all">All Games</button>
+<button class="px-8 py-3 rounded-full glass-card text-on-surface-variant hover:text-primary font-medium text-body-md transition-all">Made from TAT</button>
+<button class="px-8 py-3 rounded-full glass-card text-on-surface-variant hover:text-primary font-medium text-body-md transition-all">GDE Originals</button>
+<button class="px-8 py-3 rounded-full glass-card text-on-surface-variant hover:text-primary font-medium text-body-md transition-all">Competitions</button>
+<button class="px-8 py-3 rounded-full glass-card text-on-surface-variant hover:text-primary font-medium text-body-md transition-all">Virtual VR</button>
+</div>
+</header>
+<!-- Bento Game Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter relative z-10">
+<!-- Game Card 1: Large Featured -->
+<div class="glass-card rounded-xl overflow-hidden group col-span-1 md:col-span-2 row-span-1" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px);">
+<div class="relative h-64 md:h-full min-h-[350px]">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A high-intensity gaming setup with multiple curved monitors displaying a neon-drenched futuristic cyberpunk city street. The room is dark, illuminated by pulsing violet and cyan LED strips that reflect off polished metallic surfaces. Professional mechanical keyboard and mouse with glowing RGB backlighting are centered. The overall atmosphere is cinematic and hyper-realistic, emphasizing competitive gaming energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjXJYbPeL_jZbitAMH7UjJwbeCEk-1UYOWCmY1tkExh4oati5LoXBDUMAHed53KGmySwoojh0qfACQOIHho6HTf0yNiPclE_-_fPKmt7r62r-aP8zZIdjdqw4noKD1zt7DtAqDyw8vt-j-2qQZWLjG2tLfHzq12sSP1paYmto315W_8Y6SDY52Nho_6cE64FtCJiyJWCFLSxhSnoNTsENgpDgfcriuLH1bBx1HNUaiS1i9INd18pjWtxIaYBkpjeBYDTxs9XkB2Sk">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-3 py-1 rounded-full uppercase">Featured</span>
+<span class="bg-surface-container/80 backdrop-blur-md text-on-surface font-label-sm text-label-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span> 5.0
+                        </span>
+</div>
+<div class="absolute bottom-6 left-6 right-6">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label-sm text-label-sm text-primary">Kazan Studio</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary pulsing-dot"></span>
+<span class="font-label-sm text-label-sm text-secondary">2.4k Active</span>
+</div>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">NEON DRIFT: TOKYO</h3>
+<div class="flex items-center justify-between">
+<div class="flex gap-2">
+<span class="px-3 py-1 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">RACING</span>
+<span class="px-3 py-1 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">TAT</span>
+</div>
+<button class="neon-gradient-btn px-10 py-3 rounded-full font-bold text-on-primary uppercase tracking-widest text-label-sm">Click</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Game Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="relative h-48">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A detailed digital landscape of a synthwave-inspired valley with glowing neon grids and retro-futuristic mountains in shades of hot pink and electric blue. A low-poly futuristic sports car is speeding down a luminous road toward a giant digital sun. The lighting is dominated by deep blues and vibrant pink highlights. The style is vaporwave aesthetic with clean geometric shapes and high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhp5WKPYBswxbvSpJ89D4XY9iOrkua8IiaeVJObOEX068sB6ujroDd8lGmoazmce53yuU9A1VOTO3EzcxiXzK_DxuNgGVjH7xQKpd5zSWGofXhPzx0fl3_X-uOMFYPiAFIMBZvu94n3pHRp1Ep-K8M3C0p6LmxuvnPcrOe6sRLD7gs9W6ccjBIicSgOHwDuLxqqAqMyHyQctmw1aibf1Tk_vhjnU59j02FLx7Ji4Wr-nvQMC5CuCERHFeqI7AbPlSlNiuoiuiIBTE">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline-lg text-[20px] mb-1">Cyber Siege</h4>
+<p class="font-label-sm text-label-sm text-outline-variant">Pixel Tat</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.8</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">FPS</span>
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">COMPETITION</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 842 Players
+                        </span>
+<button class="px-6 py-2 rounded-lg border-2 border-primary/30 text-primary font-bold text-label-sm hover:bg-primary/10 transition-all uppercase">Click</button>
+</div>
+</div>
+</div>
+<!-- Game Card 3 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="relative h-48">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Intricate 3D render of a futuristic mechanical device glowing with internal cyan energy cores. The object is floating in a dark void filled with subtle digital particles and floating light shards. The aesthetic is high-tech engineering with sleek black carbon fiber surfaces and glowing orange interface elements. The lighting is moody and focused, highlighting the complex textures of the tech." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAU8t_KzEz84BuKM5EISZ6W0OhrQ8--6T_reRWuSw_Pik99NpCVT_ecTpwh92GwikuNaqST5a6ipevLl__BNC9Uy645uY16pFkjS5L_h9UmSpxws4gYIMJoaD90LJDT_XdoAswV_OS-clTEVukkzsLEFR1wVZqKSCGHtCcgN44bm1EjuVtAvuXmmvDyxhIYXjgkvJ628FIG6Ef4RpNyaNo5q7e1D5kqfwBFxasjDJegF9QbLfcJ4KFBDA1mTim5dsXyttwWxybSiw">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline-lg text-[20px] mb-1">GDE Chronicles</h4>
+<p class="font-label-sm text-label-sm text-outline-variant">GDE Originals</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.2</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">RPG</span>
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">ADVENTURE</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 1.1k Players
+                        </span>
+<button class="px-6 py-2 rounded-lg border-2 border-primary/30 text-primary font-bold text-label-sm hover:bg-primary/10 transition-all uppercase">Click</button>
+</div>
+</div>
+</div>
+<!-- Game Card 4 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="relative h-48">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Top-down view of a futuristic strategy game board with holographic units and glowing blue territorial lines. The board is set on a sleek metallic table in a command center with blurred screens in the background showing tactical data. The lighting is sharp and technological, with a primary palette of deep navy, electric blue, and highlights of amber warning lights. Professional and immersive digital board game aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD81Vg-dQCkvJcm7DyxwCkoizVsFTdLINytHGJ8scBFhNJ8yxaYUEJ7jOtr0ofiDGKJIZI62X9dFZ_zp1OYlvMC4ftlwEZpGrqTB9qzK0gw0rwnX4MA3RSJssNFWW9jjbSgc412Ab6CKFEfSvjv8l3rYjRVaXqDHoiLFtDVkG6yb431tT_2GCMQbwz5s8itSdNT7BaVwyAugjpiN1-Fi06MCbPnUy0g4OvrNSmzxHVnDs7DYwFJAQ3RutNYP0arlYefAmonYUagX38">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline-lg text-[20px] mb-1">Vector Tactics</h4>
+<p class="font-label-sm text-label-sm text-outline-variant">GDE Studio</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.5</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">STRATEGY</span>
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">MADE FROM TAT</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 320 Players
+                        </span>
+<button class="px-6 py-2 rounded-lg border-2 border-primary/30 text-primary font-bold text-label-sm hover:bg-primary/10 transition-all uppercase">Click</button>
+</div>
+</div>
+</div>
+<!-- Game Card 5 -->
+<div class="glass-card rounded-xl overflow-hidden group" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px);">
+<div class="relative h-48">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A stylized digital portrait of a robotic character with glowing optic sensors and intricate plating, set against a backdrop of raining digital code in neon green. The robot's armor has a matte black finish with recessed lighting channels in electric purple. The lighting creates a high-contrast noir effect with sharp shadows and vivid glow. Modern digital art style with a focus on character detail and atmospheric lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxm5B1FDb-KwK8hXMgAEY0KsAz3caav6Y4FhvgL-8aNk8xNe4jjdKNND98ctxjgV6RRz8p0vifHDcswRoeJp2saIBB0zY4MGvFmcRH48HCltDfbTY3LVbosyRiUeSVkAhbN5t1lVNJBw_0pKLvzQF5X9XgwuaQzoSJ2uGKWxUi3F4tIgG_0TqU0VjN3NWnbyiq-OFtxzbBQYLCAYlqKSWxBAEKJu6bCYUozZQG2t1Lcijx9VwZ_j99_lVQke-hUkXofWX3iJkOr1U">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline-lg text-[20px] mb-1">Code Breaker</h4>
+<p class="font-label-sm text-label-sm text-outline-variant">Kazan Studio</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.9</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">PUZZLE</span>
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">GDE ORIGINALS</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 2.8k Players
+                        </span>
+<button class="px-6 py-2 rounded-lg border-2 border-primary/30 text-primary font-bold text-label-sm hover:bg-primary/10 transition-all uppercase">Click</button>
+</div>
+</div>
+</div>
+<!-- Game Card 6 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="relative h-48">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="An expansive space nebula with swirling clouds of cosmic dust in vibrant magentas and deep blues, punctuated by bright stars and a distant glowing ringed planet. In the foreground, a sleek futuristic spaceship with glowing thrusters is navigating the asteroid field. The lighting is atmospheric and ethereal, with soft gradients and intense points of light. Cinematic space opera aesthetic with high visual fidelity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW9IfXrb1ygQjqIIpdJIUoP9EXh4U52-dqBtlIodpMNu9dTB58He9A5gUReGVPGdw2NayGd0mk3xaO03iKoLgS8OCd1Qp2gUfjXXgKz6mQi29B98-4H0mr6cRJ0np9GvijH8PUg6j0CVY29tMypYUUiciFhhmhbSkHMIRX-wwrtWgpe1r_SUJm9rbxrqOx2z9k59Gqq2IkG8bpJ-MjPMjQo5tPJyqoPbziojDyWvo2_v8FzKjw54htPJHrkKcWRjLkMxQ_gr6lKTo">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline-lg text-[20px] mb-1">Astra Colony</h4>
+<p class="font-label-sm text-label-sm text-outline-variant">Nova Pixel</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.4</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">SIMULATION</span>
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">GDE ORIGINALS</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 154 Players
+                        </span>
+<button class="px-6 py-2 rounded-lg border-2 border-primary/30 text-primary font-bold text-label-sm hover:bg-primary/10 transition-all uppercase">Click</button>
+</div>
+</div>
+</div>
+<!-- Game Card 7 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="relative h-48">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A gritty urban street scene in a rainy cyberpunk city at night. Glowing shop signs in Japanese kanji cast vibrant red and blue reflections on the wet asphalt. Pedestrians with glowing umbrella rims walk past a sleek cyber-enhanced motorcycle. The lighting is cinematic noir, heavy with atmosphere, steam, and saturated neon colors. Hyper-detailed textures on the brickwork and metal surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbSIn1EN3hWh24yU-Qn0VkSRhoSkao1kkIRhEuXLwUBL-kkzUypCuW6-kP_F2HkDvHu55Ea7Vd5KyU7iWcpZokhYQBx0pFw-xZHEpqpqRJPJ2BvrmI7RsAj9IV-SdWZOHy0DI0vBz8y1Tqd7b5sJBd-AweEAzi7LnHOVfuwPjIbXOnvc6X7wazdLsaD6KXVS7sqsaG2GcYFynRy02kqNjz3tGpb66cf8mOQAomEMfG6FZZ6nrIgbvgKJRnHovyXYArxKEm2D9yqmM">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline-lg text-[20px] mb-1">Rogue Protocol</h4>
+<p class="font-label-sm text-label-sm text-outline-variant">Shadow Studio</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">5.0</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">ACTION</span>
+<span class="px-2 py-1 rounded bg-surface-container-highest/50 text-on-surface-variant font-label-sm text-[10px]">FPS</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 4.1k Players
+                        </span>
+<button class="px-6 py-2 rounded-lg border-2 border-primary/30 text-primary font-bold text-label-sm hover:bg-primary/10 transition-all uppercase">Click</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Pagination / Load More -->
+<div class="mt-16 flex justify-center">
+<button class="group flex flex-col items-center gap-4 transition-all hover:scale-105 active:scale-95">
+<div class="w-16 h-16 rounded-full border-2 border-primary/30 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">
+<span class="material-symbols-outlined text-[32px]">expand_more</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Load More Experiences</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-white/5 pt-24 pb-12 mt-24">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-24">
+<div class="col-span-1 md:col-span-2 space-y-6">
+<div class="flex items-center gap-base">
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
+<img alt="GD Evenings Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZyUGzcrZvQ4W7euRMhEhWH4qSdCmiKSjGgIDY00aGDIsSKWHq74OXhv13YNN-U0jdduKFfgheoeuPIc6rgMU59DuXPDA0OtcYNd3gQOU6ayBforqZpdzfjuWSle9--ez1dMNJqvwoSsiDW4LnjhxJ67JcXIpxxxt06WJtPkamS4CKj_RHDzXxY7zwSHMEreLe1xveJkDecfcL8uW7jCQq6ijhnjB4vTw5SP0kTWFsS72cFgZHV_4Bcy_zINfsuJUHHR5apK70bpg">
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-black">GD Evenings</span>
+</div>
+<p class="text-on-surface-variant max-w-sm">The premier gaming club in Tatarstan. Built by gamers, for gamers. Join the evening revolution and master your craft.</p>
+<div class="flex gap-4">
+<div class="w-12 h-12 glass rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary transition-all cursor-pointer"><span class="material-symbols-outlined" data-icon="public">public</span></div>
+<div class="w-12 h-12 glass rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary transition-all cursor-pointer"><span class="material-symbols-outlined" data-icon="forum">forum</span></div>
+<div class="w-12 h-12 glass rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary transition-all cursor-pointer"><span class="material-symbols-outlined" data-icon="smart_display">smart_display</span></div>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-on-background uppercase tracking-wider text-label-sm">Quick Links</h4>
+<ul class="space-y-4 text-on-surface-variant">
+<li class=""><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Community Guidelines</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-on-background uppercase tracking-wider text-label-sm">Club Info</h4>
+<div class="space-y-4 text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<span class="">IT Park Kazan, Tatarstan</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
+<span class="">hello@gdevenings.ru</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="call">call</span>
+<span class="">+7 (843) 123-45-67</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-base font-body-md text-body-md text-on-surface-variant">
+<p class="">© 2024 GD Evenings Gaming Club. All rights reserved.</p>
+<div class="flex items-center gap-gutter">
+<span class="material-symbols-outlined text-secondary-fixed-dim" data-icon="verified">verified</span>
+<span class="">Verified Official Community</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Active Category Toggle
+        const categories = document.querySelectorAll('header button.rounded-full');
+        categories.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categories.forEach(b => {
+                    b.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold');
+                    b.classList.add('glass-card', 'text-on-surface-variant', 'font-medium');
+                });
+                btn.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold');
+                btn.classList.remove('glass-card', 'text-on-surface-variant', 'font-medium');
+            });
+        });
+
+        // Hover Parallax Effect for Cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+            });
+        });
+    </script>
+</body></html>
