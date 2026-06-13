@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Community Store | GD Evenings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&amp;family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#79ff5b",
+                      "secondary-container": "#2ff801",
+                      "background": "#131316",
+                      "on-secondary-fixed": "#022100",
+                      "tertiary": "#00dbe9",
+                      "primary-fixed": "#efdbff",
+                      "surface-dim": "#131316",
+                      "surface-container-low": "#1b1b1e",
+                      "on-primary-fixed": "#2c0051",
+                      "surface-variant": "#353438",
+                      "surface-container-lowest": "#0e0e11",
+                      "surface": "#131316",
+                      "on-surface": "#e4e1e6",
+                      "outline-variant": "#4c4354",
+                      "tertiary-fixed-dim": "#00dbe9",
+                      "on-error": "#690005",
+                      "primary-fixed-dim": "#dcb8ff",
+                      "on-secondary": "#053900",
+                      "inverse-primary": "#8422dc",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#353438",
+                      "on-primary-fixed-variant": "#6700b5",
+                      "on-surface-variant": "#cfc2d7",
+                      "inverse-on-surface": "#303033",
+                      "on-secondary-container": "#0f6d00",
+                      "surface-tint": "#dcb8ff",
+                      "on-tertiary-container": "#75f4ff",
+                      "tertiary-container": "#006f76",
+                      "secondary": "#d7ffc5",
+                      "error-container": "#93000a",
+                      "inverse-surface": "#e4e1e6",
+                      "secondary-fixed-dim": "#2ae500",
+                      "on-primary": "#480081",
+                      "surface-bright": "#39393c",
+                      "on-tertiary-fixed": "#002022",
+                      "outline": "#988ca0",
+                      "primary": "#dcb8ff",
+                      "on-tertiary": "#00363a",
+                      "error": "#ffb4ab",
+                      "surface-container-high": "#2a2a2d",
+                      "on-tertiary-fixed-variant": "#004f54",
+                      "on-secondary-fixed-variant": "#095300",
+                      "on-background": "#e4e1e6",
+                      "tertiary-fixed": "#7df4ff",
+                      "primary-container": "#8a2be2",
+                      "surface-container": "#1f1f22",
+                      "on-primary-container": "#eed9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "base": "8px",
+                      "gutter": "24px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Sora"],
+                      "label-sm": ["JetBrains Mono"],
+                      "headline-lg-mobile": ["Sora"],
+                      "body-md": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "headline-xl": ["Sora"]
+              },
+              "fontSize": {
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(22, 22, 26, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 20px rgba(220, 184, 255, 0.15);
+        }
+        .neon-glow-primary:hover {
+            box-shadow: 0 0 30px rgba(220, 184, 255, 0.3);
+            border-color: rgba(220, 184, 255, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #dcb8ff, #00dbe9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #dcb8ff, #00dbe9);
+            color: #131316;
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 15px rgba(0, 219, 233, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md selection:bg-primary/30 selection:text-primary" style="width: 1280px; height: 1980px; margin: 0 auto; position: relative; overflow: hidden;">
+<!-- Navigation -->
+<nav class="fixed top-0 z-50 w-[1280px] bg-background/80 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+<div class="max-w-container-max mx-auto px-margin-desktop py-4 flex justify-between items-center">
+<div class="flex items-center gap-base">
+<div class="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+<img alt="GD Evenings Club Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZyUGzcrZvQ4W7euRMhEhWH4qSdCmiKSjGgIDY00aGDIsSKWHq74OXhv13YNN-U0jdduKFfgheoeuPIc6rgMU59DuXPDA0OtcYNd3gQOU6ayBforqZpdzfjuWSle9--ez1dMNJqvwoSsiDW4LnjhxJ67JcXIpxxxt06WJtPkamS4CKj_RHDzXxY7zwSHMEreLe1xveJkDecfcL8uW7jCQq6ijhnjB4vTw5SP0kTWFsS72cFgZHV_4Bcy_zINfsuJUHHR5apK70bpg"/>
+</div>
+<span class="font-headline-lg text-[24px] font-black text-primary drop-shadow-[0_0_10px_rgba(220,184,255,0.5)]">GD Evenings</span>
+</div>
+<div class="flex items-center gap-gutter">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md" href="#">About Club</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md" href="#">Games</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md" href="#">Events</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md" href="#">Forum</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-bold text-body-md" href="#">Store</a>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined hover:text-primary cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined hover:text-primary cursor-pointer" data-icon="person_pin">person_pin</span>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold hover:scale-105 transition-all">Login</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-[80px] px-margin-desktop w-full max-w-container-max mx-auto flex flex-col">
+<!-- Hero Section -->
+<section class="mt-8 mb-8 text-center relative overflow-hidden py-12 rounded-xl glass-panel neon-glow-primary">
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at center, #8422dc 0%, transparent 70%);"></div>
+<div class="relative z-10 max-w-2xl mx-auto px-6">
+<h1 class="font-headline-xl text-headline-lg md:text-headline-xl text-primary font-black mb-4 tracking-tight drop-shadow-[0_0_15px_rgba(220,184,255,0.6)]">
+                Club Store
+            </h1>
+<p class="font-body-lg text-body-md text-on-surface-variant mb-6">
+                Gear up and support the GD Evenings community. Premium merch designed for the after-dark digital lounge experience. Wear the pulse.
+            </p>
+<button class="btn-gradient px-8 py-2.5 rounded-full font-label-sm text-label-sm uppercase font-bold tracking-wider">
+                Shop All
+            </button>
+</div>
+</section>
+<!-- Filters -->
+<div class="flex flex-wrap gap-3 mb-6 pb-4 border-b border-white/5">
+<button class="px-4 py-1.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm border border-primary/30">All Items</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors">Apparel</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors">Accessories</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors">Desk Gear</button>
+</div>
+<!-- Product Grid -->
+<section class="grid grid-cols-3 gap-6 mb-8">
+<!-- Product Card 1 -->
+<div class="glass-panel rounded-xl overflow-hidden flex flex-col group neon-glow-primary transition-all">
+<div class="relative h-48 bg-surface-container-lowest overflow-hidden">
+<div class="absolute top-3 left-3 z-10">
+<span class="bg-secondary-fixed/15 text-secondary-container px-2 py-0.5 rounded font-label-sm text-[10px] uppercase border border-secondary-fixed/30 backdrop-blur-md">New</span>
+</div>
+<img alt="GD Evenings Pro Tee" class="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2Oyn5SnJJQo7CtXVGApMRGrw08oNWzNfgION1r5kFz4JDHgRdSBMC6g3TzrK3hDH75kaTHTpSfssrJVdEUKkvikF-n5hSc2onF7zPTG7FKfxaR51GjFMy1Gom9SvwbVgRYyOygHnBIPdUhNIEjJqUAaDsrkftINcyR8cOijUYxVfWQiGcEYrY68nqj_doj9yWyb8ZGa2q4h_ewpMxf3nToC3Sgam66IzMitEaG2HV5dDvUZu3K1ri_Stgv-2wdxV8bIZVGW3y-Y8"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-on-surface group-hover:text-primary transition-colors text-[18px]">GD Evenings Pro Tee</h3>
+<span class="font-label-sm text-label-sm text-tertiary">2,500 RUB</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 text-sm line-clamp-2">Premium black heavy cotton tee featuring the iconic neon purple club insignia.</p>
+<button class="w-full py-2 rounded bg-surface-container-high border border-outline-variant text-on-surface hover:border-primary hover:text-primary transition-all font-label-sm text-[10px] uppercase flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span> Add to Cart
+                </button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="glass-panel rounded-xl overflow-hidden flex flex-col group neon-glow-primary transition-all">
+<div class="relative h-48 bg-surface-container-lowest overflow-hidden">
+<div class="absolute top-3 left-3 z-10">
+<span class="bg-primary-container/20 text-primary px-2 py-0.5 rounded font-label-sm text-[10px] uppercase border border-primary/30 backdrop-blur-md">Best Seller</span>
+</div>
+<img alt="Neon Pulse Ceramic Mug" class="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLFxYmnrTDMkiebvFa62RvKx0Ed2psQ24-okkqbVkjNDlVHiRr3pqhcJETySeD7PoKlHfBJflQfOQrEqjR-uVyEFnUgGhNgN_1-wmzdyDvl8FyGuRKwrfWbw4lWeJUwr6IuY2vFJ27PD_2ySnwzXZ9PIe82Sl9KWtSQFy2eU-QWAVYicTLkm0YEFRVV6QgRUrkG6OAV0OaHAy4ORX83J9XMi7Qii2YKc7_hb42TX_dpJ1jqG1Z7Zg3Z9UNal85fQPnoSSvHH2Q1bM"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-on-surface group-hover:text-primary transition-colors text-[18px]">Neon Pulse Mug</h3>
+<span class="font-label-sm text-label-sm text-tertiary">1,200 RUB</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 text-sm line-clamp-2">Heat-sensitive ceramic mug. Watch the cyber-grid activate when filled with hot liquid.</p>
+<button class="w-full py-2 rounded bg-surface-container-high border border-outline-variant text-on-surface hover:border-primary hover:text-primary transition-all font-label-sm text-[10px] uppercase flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span> Add to Cart
+                </button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="glass-panel rounded-xl overflow-hidden flex flex-col group neon-glow-primary transition-all">
+<div class="relative h-48 bg-surface-container-lowest overflow-hidden">
+<img alt="Cyber Scribe Pen Set" class="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLj_dpwbNqvxoQXQXL9R0t6DgVFsulKPzH1TmRwfJO15s3x9s9fkb1z0bNnBSynHiWLs18xnH1--8Xfl2kIKlAKJ6NmB9YouYzTl_yZNWLjKLleuMTKGTb5GvNZ1MP1kLU8RO578G259a3ywWEXx70Mvbb34jfE1a2FClYElPvkIuGsFO0Wuf7EyAhHkbIpSFgOMOFjKNTmN4V3C_xXvyWF79qO17A1bEQIYLqRh_P_8n4T0G5XPvBUS-XRxth4_mL3FvRMd200vQ"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-on-surface group-hover:text-primary transition-colors text-[18px]">Cyber Scribe Pen Set</h3>
+<span class="font-label-sm text-label-sm text-tertiary">3,800 RUB</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 text-sm line-clamp-2">Heavyweight metallic pens with subtle luminous accents. For the analog moments.</p>
+<button class="w-full py-2 rounded bg-surface-container-high border border-outline-variant text-on-surface hover:border-primary hover:text-primary transition-all font-label-sm text-[10px] uppercase flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span> Add to Cart
+                </button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="glass-panel rounded-xl overflow-hidden flex flex-col group neon-glow-primary transition-all">
+<div class="relative h-48 bg-surface-container-lowest overflow-hidden">
+<div class="absolute top-3 left-3 z-10">
+<span class="bg-secondary-fixed/15 text-secondary-container px-2 py-0.5 rounded font-label-sm text-[10px] uppercase border border-secondary-fixed/30 backdrop-blur-md">Limited</span>
+</div>
+<img alt="GDE Original Hoodie" class="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Uv3QK1ABWLbwSP8JD4vu7JpDLrGyx4Vt6hxZ_laoiAlpq5wpXX8CfFqxAuFvowXbFoUilcSbqdxZBMSe5ni2c1ysxQl5wxw9uqNXbs9MuA6BNynu6zop-w9kZ-WWXMVDxOcP26n2GXJjWDV27sGuUhX33s0841AR9gK5ImGKzSdMG2uSh1KIaR2q3K7LJk0xAiLlr5Uei4MRqgUwTxTyxm2Pncr-owM9FsKcUqpIKMx5jh60te_VQdMcHL6k3jz9XCSIDiigg3Y"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-on-surface group-hover:text-primary transition-colors text-[18px]">GDE Original Hoodie</h3>
+<span class="font-label-sm text-label-sm text-tertiary">5,500 RUB</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 text-sm line-clamp-2">Premium 400gsm cotton. Oversized fit, deep pockets, and embroidered subtle branding.</p>
+<button class="w-full py-2 rounded bg-surface-container-high border border-outline-variant text-on-surface hover:border-primary hover:text-primary transition-all font-label-sm text-[10px] uppercase flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span> Add to Cart
+                </button>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="glass-panel rounded-xl overflow-hidden flex flex-col group neon-glow-primary transition-all">
+<div class="relative h-48 bg-surface-container-lowest overflow-hidden">
+<img alt="Tactical Mousepad" class="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOfZWS2FyqtvW6PD7aUAhf5R8QzJGxyOeRXYvJIiwA-AqbJVBQqFzNr40qTj1fgCfi4yg0lOV4rliPBbsKdQq4FABvSTMItjhfILzOIxFJvuiAm7LJDiTQPWaGc02PBlTAgTshWx6-S1NsZkjCBgCV2-7zb9D06xFF4MedlqnCyY5tGB5z-XixKNfO-_wUmSoFnrRJGr0YoNc3e5e8YGvrUYOFcdbBDLmlDfIvfOM9hk_0UlnC7wwD1zNJI8fq9QpAVeRAUkXEQYw"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-on-surface group-hover:text-primary transition-colors text-[18px]">Tactical Desk Mat</h3>
+<span class="font-label-sm text-label-sm text-tertiary">2,800 RUB</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 text-sm line-clamp-2">Large 900x400mm surface featuring the exclusive cyber-topography club art.</p>
+<button class="w-full py-2 rounded bg-surface-container-high border border-outline-variant text-on-surface hover:border-primary hover:text-primary transition-all font-label-sm text-[10px] uppercase flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span> Add to Cart
+                </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-white/5 pt-12 pb-8 mt-auto w-full">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-4 gap-gutter mb-12">
+<div class="col-span-2 space-y-4">
+<div class="flex items-center gap-base">
+<div class="w-8 h-8 rounded-full border-2 border-primary overflow-hidden">
+<img alt="GD Evenings Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZyUGzcrZvQ4W7euRMhEhWH4qSdCmiKSjGgIDY00aGDIsSKWHq74OXhv13YNN-U0jdduKFfgheoeuPIc6rgMU59DuXPDA0OtcYNd3gQOU6ayBforqZpdzfjuWSle9--ez1dMNJqvwoSsiDW4LnjhxJ67JcXIpxxxt06WJtPkamS4CKj_RHDzXxY7zwSHMEreLe1xveJkDecfcL8uW7jCQq6ijhnjB4vTw5SP0kTWFsS72cFgZHV_4Bcy_zINfsuJUHHR5apK70bpg"/>
+</div>
+<span class="font-headline-lg-mobile text-[20px] text-primary font-black">GD Evenings</span>
+</div>
+<p class="text-on-surface-variant text-sm max-w-sm">The premier gaming club in Tatarstan. Built by gamers, for gamers. Join the evening revolution and master your craft.</p>
+<div class="flex gap-4">
+<div class="w-10 h-10 glass-panel rounded-lg flex items-center justify-center text-on-surface-variant hover:text-primary transition-all cursor-pointer"><span class="material-symbols-outlined text-sm" data-icon="public">public</span></div>
+<div class="w-10 h-10 glass-panel rounded-lg flex items-center justify-center text-on-surface-variant hover:text-primary transition-all cursor-pointer"><span class="material-symbols-outlined text-sm" data-icon="forum">forum</span></div>
+<div class="w-10 h-10 glass-panel rounded-lg flex items-center justify-center text-on-surface-variant hover:text-primary transition-all cursor-pointer"><span class="material-symbols-outlined text-sm" data-icon="smart_display">smart_display</span></div>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-on-background uppercase tracking-wider text-label-sm">Quick Links</h4>
+<ul class="space-y-2 text-on-surface-variant text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Community Guidelines</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-on-background uppercase tracking-wider text-label-sm">Club Info</h4>
+<div class="space-y-3 text-on-surface-variant text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="location_on">location_on</span>
+<span>IT Park Kazan, Tatarstan</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="mail">mail</span>
+<span>hello@gdevenings.ru</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="call">call</span>
+<span>+7 (843) 123-45-67</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-6 border-t border-white/5 gap-base text-sm text-on-surface-variant">
+<p>© 2024 GD Evenings Gaming Club. All rights reserved.</p>
+<div class="flex items-center gap-gutter">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" data-icon="verified">verified</span>
+<span>Verified Official Community</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
