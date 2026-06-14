@@ -22,8 +22,8 @@ Link to the prototype: https://www.figma.com/proto/0Sz1FXBTcbhNLNBa4yhUKF/SWP_GD
 
 ### MVP v0 report
 
-- Link to [`reports/week2/mvp-v0-report.md`](https://github.com/Son-Go/SWP_team30/blob/853208680742a2691e5cf055e795fad7d335a45c/reports/week2/mvp-v0-report.md)
-The deployed MVP v0 or runnable artifact, run instructions, and public video demonstration are in [mvp-v0-report.md](https://github.com/Son-Go/SWP_team30/blob/853208680742a2691e5cf055e795fad7d335a45c/reports/week2/mvp-v0-report.md) file 
+- Link to [`reports/week2/mvp-v0-report.md`](https://github.com/Son-Go/SWP_team30/blob/0ecfd69e6b79faad4c91a3cabb7f0f9795feacde/reports/week2/mvp-v0-report.md)
+The deployed MVP v0 or runnable artifact, run instructions, and public video demonstration are in [mvp-v0-report.md](https://github.com/Son-Go/SWP_team30/blob/0ecfd69e6b79faad4c91a3cabb7f0f9795feacde/reports/week2/mvp-v0-report.md) file 
 ---
 
 ### PR template and reviewed MRs
@@ -91,7 +91,7 @@ We did mot found any additional links, which should be added to config, so we pr
   - Welcome page (`welcome_page.jpg`) — contains project overview and calls-to-action for collaborators
 - User story link: [US-10](https://github.com/Son-Go/SWP_team30/blob/main/reports/week2/user-stories.md#us-10-informative-welcome-page)
 
-Link to [mvp-v0-report.md](https://github.com/Son-Go/SWP_team30/blob/e041ee9583e1cf413d6561e086546e956eeb62ad/reports/week2/mvp-v0-report.md)
+Link to [mvp-v0-report.md](https://github.com/Son-Go/SWP_team30/blob/0ecfd69e6b79faad4c91a3cabb7f0f9795feacde/reports/week2/mvp-v0-report.md)
 
 The MVP v0 establishes the foundational infrastructure for the GDE website, including:
 - Basic project structure and routing
@@ -100,30 +100,29 @@ The MVP v0 establishes the foundational infrastructure for the GDE website, incl
 While MVP v0 does not implement complete user stories, it provides the technical foundation required for future feature development.
 
 #### Link to the mvp-v0-report.md
-Link to mvp-v0-report.md: https://github.com/Son-Go/SWP_team30/blob/e041ee9583e1cf413d6561e086546e956eeb62ad/reports/week2/mvp-v0-report.md
+Link to mvp-v0-report.md: https://github.com/Son-Go/SWP_team30/blob/0ecfd69e6b79faad4c91a3cabb7f0f9795feacde/reports/week2/mvp-v0-report.md
 
 --- 
 
 ## Customer meeting transcript
 
-Link to the published customer transcript: https://github.com/Son-Go/SWP_team30/blob/0f53ff1e18ba968bdb1a47d9a93787e763ab1cef/reports/week2/customer-meeting-transcript.md
-
+Link to the published customer [transcript](https://github.com/Son-Go/SWP_team30/blob/9f664153e877c0d2d86d76fddc45a1b1d748497e/reports/week2/customer-meeting-transcript.md)
+More understandable [meeting notes](https://github.com/Son-Go/SWP_team30/blob/9f664153e877c0d2d86d76fddc45a1b1d748497e/reports/week2/customer-meeting-notes.md)
 ---
 
 ## Customer meeting summary
 
-Link to the customer meeting summary: https://github.com/Son-Go/SWP_team30/blob/0f53ff1e18ba968bdb1a47d9a93787e763ab1cef/reports/week2/customer-meeting-summary.md
+Link to the customer meeting [summary](https://github.com/Son-Go/SWP_team30/blob/0ecfd69e6b79faad4c91a3cabb7f0f9795feacde/reports/week2/customer-meeting-summary.md)
 
 ---
 
 ## Week 2 analysis
 
-Link to the Week 2 analysis: https://github.com/Son-Go/SWP_team30/blob/0f53ff1e18ba968bdb1a47d9a93787e763ab1cef/reports/week2/analysis.md
+Link to the Week 2 [analysis](https://github.com/Son-Go/SWP_team30/blob/9f664153e877c0d2d86d76fddc45a1b1d748497e/reports/week2/analysis.md)
 
 ---
 
 ## LLM usage
 
-Link to the LLM report: https://github.com/Son-Go/SWP_team30/blob/0f53ff1e18ba968bdb1a47d9a93787e763ab1cef/reports/week2/llm-report.md
-
+Link to the LLM [report](https://github.com/Son-Go/SWP_team30/blob/9f664153e877c0d2d86d76fddc45a1b1d748497e/reports/week2/llm-report.md)
 ---
