@@ -9,6 +9,8 @@ services:
       - '5432:5432'
     networks:
       - gde-network
+    volumes:
+      - postgres_data:/var/lib/postgresql
 
   pgadmin:
     image: 'dpage/pgadmin4:latest'
@@ -25,3 +27,6 @@ services:
 networks:
   gde-network:
     driver: bridge
+
+volumes:
+  postgres_data:

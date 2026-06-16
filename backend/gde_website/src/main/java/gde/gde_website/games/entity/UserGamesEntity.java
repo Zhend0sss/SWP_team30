@@ -1,5 +1,6 @@
-package gde.gde_website.games.model;
+package gde.gde_website.games.entity;
 
+import gde.gde_website.users.entity.UserEntity;
 import jakarta.persistence.*;
 import java.time.Instant;
 

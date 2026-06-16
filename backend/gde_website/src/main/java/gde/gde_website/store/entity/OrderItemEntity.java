@@ -1,4 +1,4 @@
-package gde.gde_website.store.model;
+package gde.gde_website.store.entity;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;

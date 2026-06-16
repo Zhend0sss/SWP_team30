@@ -1,4 +1,4 @@
-package gde.gde_website.games.model;
+package gde.gde_website.games.entity;
 
 import jakarta.persistence.*;
 

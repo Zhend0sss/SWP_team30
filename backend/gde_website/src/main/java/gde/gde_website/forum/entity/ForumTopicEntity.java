@@ -1,4 +1,4 @@
-package gde.gde_website.forum.model;
+package gde.gde_website.forum.entity;
 
 import jakarta.persistence.*;
 import java.time.Instant;

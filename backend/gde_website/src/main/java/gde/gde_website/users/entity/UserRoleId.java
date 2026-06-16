@@ -1,4 +1,4 @@
-package gde.gde_website.users.model;
+package gde.gde_website.users.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
