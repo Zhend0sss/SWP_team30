@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getGames } from "../api/api";
+import GameCard from "../components/GameCard";
 
 function GamesPage() {
   const [games, setGames] = useState([]);
@@ -51,23 +52,7 @@ function GamesPage() {
       </div>
       <div>
         {games.map((game) => (
-          <div key={game.id}>
-            <h2>{game.title}</h2>
-
-            <p>{game.description || "Описание пока отсутствует."}</p>
-
-            {game.bannerUrl ? (
-              <img
-                src={game.bannerUrl}
-                alt={game.title}
-                style={{ width: "240px", borderRadius: "8px" }}
-              />
-            ) : null}
-
-            <div>
-              <Link to={`/games/${game.id}`}>Открыть страницу игры</Link>
-            </div>
-          </div>
+          <GameCard key={game.id} game={game} />
         ))}
       </div>
     </div>
