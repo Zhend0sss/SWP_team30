@@ -39,4 +39,13 @@ public class JwtUtils {
             return false;
         }
     }
+
+    // #TODO: debug
+    // Testing Method
+    public String generateToken(Long userId) {
+        return Jwts.builder()
+                .claim("userId", userId)
+                .signWith(getKey())
+                .compact();
+    }
 }

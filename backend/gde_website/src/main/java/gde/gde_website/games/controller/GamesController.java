@@ -5,6 +5,9 @@ import gde.gde_website.games.model.Games;
 import gde.gde_website.games.model.GamesResponce;
 import gde.gde_website.games.repository.GamesRepository;
 import gde.gde_website.games.service.GamesService;
+import gde.gde_website.security.JwtUtils;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
@@ -26,6 +30,7 @@ public class GamesController {
     private static final Logger gamesControllerLogger = LoggerFactory.getLogger(GamesController.class);
 
     private final GamesService gamesService;
+    private final JwtUtils jwtUtils; // #TODO: debug
 
     @GetMapping
     public ResponseEntity<Page<GamesEntity>> getAllGames(
@@ -70,5 +75,12 @@ public class GamesController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Games> deleteGame(@PathVariable("id") Long id) {
         return null;
+    }
+
+    // #TODO: debug
+    // Testing Method
+    @GetMapping("/dev/token/{userId}")
+    public String getTestToken(@PathVariable Long userId) {
+        return jwtUtils.generateToken(userId);
     }
 }
