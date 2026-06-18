@@ -1,29 +1,20 @@
 package gde.gde_website.users.controller;
 
 import gde.gde_website.games.controller.GamesController;
-import gde.gde_website.games.model.Games;
-import gde.gde_website.games.service.GamesService;
-import gde.gde_website.users.model.User;
 import gde.gde_website.users.service.UsersService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class UsersController {
     private static final Logger gamesControllerLogger = LoggerFactory.getLogger(GamesController.class);
 
     private final UsersService userService;
-
-    public UsersController(UsersService userService) {
-        this.userService = userService;
-    }
 
     // #TODO: implement this function
     // This function must implement user registration logic,
