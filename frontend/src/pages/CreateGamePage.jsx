@@ -1,94 +1,112 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createGame } from "../api/api";
+import ErrorState from "../components/ErrorState";
 
 function CreateGamePage() {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [bannerFile, setBannerFile] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [banner, setBanner] = useState(null);
   const [error, setError] = useState("");
-
-  function handleBannerChange(event) {
-    const file = event.target.files[0];
-    setBannerFile(file || null);
-  }
+  const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
-      setLoading(true);
+      setSubmitting(true);
       setError("");
 
       const formData = new FormData();
       formData.append("title", title);
       formData.append("description", description);
 
-      if (bannerFile) {
-        formData.append("banner", bannerFile);
+      if (banner) {
+        formData.append("banner", banner);
       }
 
-      await createGame(formData);
-      navigate("/games");
+      const createdGame = await createGame(formData);
+      navigate(`/games/${createdGame.id}`);
     } catch (err) {
-      setError(err.message || "Не удалось создать игру(слава Богу...)");
+      setError(err.message || "Не удалось создать игру(Фух...)");
     } finally {
-      setLoading(false);
+      setSubmitting(false);
     }
   }
 
   return (
-    <div>
-      <Link to="/games">← Назад в каталог</Link>
+    <section className="section-lg">
+      <div className="section">
+        <Link to="/games" className="nav-link">
+          ← Назад
+        </Link>
 
-      <h1>Создать игру</h1>
-
-      {error ? <ErrorState message={error} /> : null}
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Название</label>
-          <input
-            id="title"
-            type="text"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-            placeholder="Название игры"
-            required
-          />
+        <div className="section">
+          <h1 className="page-title">Создать игру</h1>
         </div>
+      </div>
 
-        <div>
-          <label htmlFor="description">Описание</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-            placeholder="Описание игры"
-            rows="6"
-          />
-        </div>
+      <article className="card">
+        {error ? <ErrorState message={error} /> : null}
 
-        <div>
-          <label htmlFor="banner">Баннер</label>
-          <input
-            id="banner"
-            type="file"
-            accept="image/*"
-            onChange={handleBannerChange}
-          />
-        </div>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="label" htmlFor="title">
+              Название
+            </label>
+            <input
+              id="title"
+              className="input"
+              type="text"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              required
+            />
+          </div>
 
-        {bannerFile ? <p>Выбран файл: {bannerFile.name}</p> : null}
+          <div className="form-group">
+            <label className="label" htmlFor="description">
+              Описание
+            </label>
+            <textarea
+              id="description"
+              className="textarea"
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
+            />
+          </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Создание..." : "Создать игру"}
-        </button>
-      </form>
-    </div>
+          <div className="form-group">
+            <label className="label" htmlFor="banner">
+              Баннер
+            </label>
+            <input
+              id="banner"
+              className="file-input"
+              type="file"
+              accept="image/*"
+              onChange={(event) => setBanner(event.target.files[0] || null)}
+            />
+          </div>
+
+          <div className="card-actions">
+            <button
+              type="submit"
+              className="button button-secondary"
+              disabled={submitting}
+            >
+              {submitting ? "Создание..." : "Создать"}
+            </button>
+
+            <Link to="/games" className="button button-ghost">
+              Отмена
+            </Link>
+          </div>
+        </form>
+      </article>
+    </section>
   );
 }
 

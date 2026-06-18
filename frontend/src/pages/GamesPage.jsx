@@ -39,26 +39,43 @@ function GamesPage() {
 
   if (games.length === 0) {
     return (
-      <div>
-        <h1>Каталог игр</h1>
+      <section className="section-lg">
+        <div className="page-header">
+          <div className="section">
+            <h1 className="page-title">Каталог</h1>
+            <p className="page-subtitle">
+              Здесь будут отображаться игры вашего сообщества
+            </p>
+          </div>
+
+          <Link to="/games/create" className="button button-secondary">
+            Создать игру
+          </Link>
+        </div>
+
         <EmptyState message="Пока нет ни одной игры." />
-        <Link to="/games/create">Создать первую игру</Link>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div>
-      <div>
-        <h1>Каталог игр</h1>
-        <Link to="/games/create">Создать игру</Link>
+    <section className="section-lg">
+      <div className="page-header">
+        <div className="section">
+          <h1 className="page-title">Каталог</h1>
+        </div>
+
+        <Link to="/games/create" className="button button-secondary">
+          Создать игру
+        </Link>
       </div>
-      <div>
+
+      <div className="games-grid">
         {games.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

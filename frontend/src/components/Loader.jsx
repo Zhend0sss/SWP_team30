@@ -1,7 +1,7 @@
 import React from "react";
 
 function Loader({ text = "Загрузка..." }) {
-  return <div>{text}</div>;
+  return <div className="state-box">{text}</div>;
 }
 
 export default Loader;

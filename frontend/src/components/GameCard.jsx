@@ -3,20 +3,26 @@ import { Link } from "react-router-dom";
 
 function GameCard({ game }) {
   return (
-    <article>
-      <h2>{game.title}</h2>
-
+    <article className="card section">
       {game.bannerUrl ? (
-        <img
-          src={game.bannerUrl}
-          alt={game.title}
-          style={{ width: "240px", borderRadius: "8px" }}
-        />
-      ) : null}
+        <img src={game.bannerUrl} alt={game.title} />
+      ) : (
+        <div className="state-box">Баннер пока не загружен.</div>
+      )}
 
-      <p>{game.description || "Описание пока отсутствует."}</p>
+      <div className="section">
+        <h2 className="card-title">{game.title}</h2>
 
-      <Link to={`/games/${game.id}`}>К игре</Link>
+        <p className="card-text">
+          {game.description || "Описание пока отсутствует."}
+        </p>
+      </div>
+
+      <div className="card-actions">
+        <Link to={`/games/${game.id}`} className="button">
+          К игре
+        </Link>
+      </div>
     </article>
   );
 }
