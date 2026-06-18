@@ -59,16 +59,17 @@ public class GamesController {
     // This function must save new created game into DB
     @PostMapping
     public ResponseEntity<Games> createGame(
-            @RequestParam  String title,
+            @RequestParam String title,
             @RequestParam String description,
             @RequestParam String bannerUrl,
             Authentication authentication
     ) {
-        Long currentUserId = null;
 
         if (authentication == null || !authentication.isAuthenticated()) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not authenticated");
         }
+
+        Long currentUserId = (Long) authentication.getPrincipal();
 
         Games gameWithCurrentAuthor = new Games(
                 null,
