@@ -25,8 +25,8 @@ async function request(path, options = {}) {
   return data;
 }
 
-export function getGames() {
-  return request("/games");
+export function getGames(page = 0) {
+  return request(`/games?page=${page}`);
 }
 
 export function getGameById(id) {
