@@ -2,9 +2,7 @@ package gde.gde_website.users.service;
 
 import gde.gde_website.security.JwtUtils;
 import gde.gde_website.users.entity.UserEntity;
-import gde.gde_website.users.model.LoginRequest;
-import gde.gde_website.users.model.LoginResponse;
-import gde.gde_website.users.model.RegisterRequest;
+import gde.gde_website.users.model.*;
 import gde.gde_website.users.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -50,5 +48,17 @@ public class UsersService {
 
         String token = jwtUtils.generateToken(user.getId());
         return new LoginResponse(token);
+    }
+
+    public MeResponse me(Long userId) {
+        UserEntity userEntity = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User doesnt exists"));
+
+        return new MeResponse(
+                userEntity.getId(),
+                userEntity.getUsername(),
+                userEntity.getEmail(),
+                userEntity.getProfileImageUrl()
+        );
     }
 }
