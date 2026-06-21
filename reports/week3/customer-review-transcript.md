@@ -1,3 +1,5 @@
+> This week transcript is less chaotic, than previous week, but it still hard to read (accessible speech-to-text models are not the best ones on recognizing multiple speakers). For clear meeting results please go to `/docs/customer-review-summary.md`
+
 00:00:00
 Can I? Should I start?
 00:00:03
