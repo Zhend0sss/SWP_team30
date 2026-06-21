@@ -8,12 +8,11 @@
 - Z - spint number (sprints are indexed from last Y release)
 - For clean new major releases Y.Z are 0.0
 
-// #TODO fix link
 ## [Unreleased](https://github.com/Son-Go/SWP_team30)
 
-- some entry
+- Documentation updates, readme updates and other non-functional changes
 
-## [v0.1.0](https://github.com/Son-Go/SWP_team30)
+## [v0.1.0](https://github.com/Son-Go/SWP_team30/releases/tag/MVP-v1)
 
 ### Added
 - [US-14](https://github.com/Son-Go/SWP_team30/issues/55) New games can be added directly from game catalog page
