@@ -18,12 +18,13 @@ This repository now includes Loki as the log storage backend for the observabili
 
 - Alloy discovers Docker containers and forwards logs to Loki.
 - Loki stores and serves those logs.
+- Prometheus can scrape Loki metrics.
 - Grafana can be added later as the query and dashboard UI.
 
 ## How to run it
 
 ```bash
-docker compose -f compose.yaml -f compose.observability.yaml up -d loki alloy
+docker compose -f compose.yaml -f compose.observability.yaml up -d prometheus loki alloy
 ```
 
 ## Notes

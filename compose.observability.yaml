@@ -1,4 +1,19 @@
 services:
+  prometheus:
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --web.enable-lifecycle
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    networks:
+      - gde-network
+
   loki:
     image: grafana/loki:latest
     restart: unless-stopped
@@ -34,3 +49,4 @@ services:
 volumes:
   alloy_data:
   loki_data:
+  prometheus_data:

@@ -23,10 +23,10 @@ Start the main app stack first:
 docker compose up -d
 ```
 
-Start Loki and Alloy with the observability overlay:
+Start Prometheus, Loki, and Alloy with the observability overlay:
 
 ```bash
-docker compose -f compose.yaml -f compose.observability.yaml up -d loki alloy
+docker compose -f compose.yaml -f compose.observability.yaml up -d prometheus loki alloy
 ```
 
 ## Notes
