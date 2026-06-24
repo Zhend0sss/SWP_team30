@@ -825,6 +825,7 @@
         "x": 0,
         "y": 44
       },
+      "description": "Lower seconds means cAdvisor is currently seeing the container. Values above 120 seconds usually mean the container is stopped, gone, or cAdvisor/Prometheus cannot see it.",
       "id": 16,
       "options": {
         "cellHeight": "sm",
@@ -851,7 +852,7 @@
           "refId": "A"
         }
       ],
-      "title": "Container State: Seconds Since Last Seen",
+      "title": "Container State / Last Seen",
       "transformations": [
         {
           "id": "organize",
@@ -926,10 +927,45 @@
         "uid": "loki"
       },
       "gridPos": {
-        "h": 10,
+        "h": 8,
         "w": 24,
         "x": 0,
         "y": 52
+      },
+      "id": 19,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": true,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "loki"
+          },
+          "expr": "{job=\"docker\", service_name=\"docker-events\"} |~ \"die|oom|kill|stop|destroy|restart|health_status: unhealthy\"",
+          "refId": "A"
+        }
+      ],
+      "title": "Container Stop / Failure Events",
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "loki"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 60
       },
       "id": 18,
       "options": {

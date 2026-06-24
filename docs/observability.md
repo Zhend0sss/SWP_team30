@@ -8,6 +8,7 @@ The stack is meant to make local Docker-based debugging easier by giving you:
 
 - Centralized logs for all Compose containers.
 - Docker container CPU, memory, network, and status metrics.
+- Docker container stop, restart, kill, and unhealthy events.
 - Basic metrics for the observability components themselves.
 - A single UI for searching logs and viewing metrics.
 - A clean path to add backend application metrics later.
@@ -49,6 +50,16 @@ Files:
 ### cAdvisor
 
 cAdvisor exposes Docker container metrics for Prometheus.
+
+Files:
+
+- `compose.observability.yaml`
+
+### Docker Events
+
+The `docker-events` service streams Docker lifecycle events to stdout. Alloy collects those logs and sends them to Loki.
+
+This is what lets the dashboard show when a container stopped, restarted, was killed, hit OOM, or became unhealthy.
 
 Files:
 
@@ -136,8 +147,9 @@ These credentials are defined in `compose.observability.yaml` and should be chan
 3. Alloy relabels the container metadata.
 4. Alloy pushes the logs to Loki.
 5. cAdvisor exposes Docker container metrics.
-6. Prometheus scrapes metrics from Alloy, Loki, cAdvisor, and Prometheus itself.
-7. Grafana queries Loki for logs and Prometheus for metrics.
+6. The `docker-events` service writes Docker lifecycle events to logs.
+7. Prometheus scrapes metrics from Alloy, Loki, cAdvisor, and Prometheus itself.
+8. Grafana queries Loki for logs/events and Prometheus for metrics.
 
 ## How To Work With It
 
@@ -253,6 +265,7 @@ The dashboard includes:
 - overall Docker container memory usage
 - per-container CPU, memory, and network panels
 - a container state table based on cAdvisor's last-seen metric
+- a Docker lifecycle events panel for stop, restart, kill, OOM, and unhealthy events
 - backend, frontend, Postgres, and all-container log panels
 - a dedicated error details panel limited to the last 5 minutes
 
@@ -275,3 +288,4 @@ The dashboard includes:
 - Prometheus stores metrics in a local Docker volume.
 - Alloy reads Docker logs through the Docker socket.
 - cAdvisor reads Docker/container runtime data for local container metrics.
+- `docker-events` records Docker lifecycle events so failure time and event reason are visible in Loki.

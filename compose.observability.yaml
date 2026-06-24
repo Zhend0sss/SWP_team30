@@ -80,6 +80,18 @@ services:
     networks:
       - gde-network
 
+  docker-events:
+    image: docker:cli
+    restart: unless-stopped
+    command:
+      - sh
+      - -c
+      - docker events --format '{{json .}}'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - gde-network
+
 volumes:
   alloy_data:
   grafana_data:
