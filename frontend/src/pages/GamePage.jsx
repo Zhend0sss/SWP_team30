@@ -3,10 +3,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { deleteGame, getGameById, updateGame } from "../api/api";
 import ErrorState from "../components/ErrorState";
 import Loader from "../components/Loader";
+import { useAuth } from "../context/auth-context";
 
 function GamePage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { token } = useAuth();
 
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,7 +18,7 @@ function GamePage() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [banner, setBanner] = useState(null);
+  const [bannerUrl, setBannerUrl] = useState("");
 
   useEffect(() => {
     async function loadGame() {
@@ -24,10 +26,11 @@ function GamePage() {
         setLoading(true);
         setError("");
 
-        const data = await getGameById(id);
+        const data = await getGameById(id, token);
         setGame(data);
         setTitle(data.title || "");
         setDescription(data.description || "");
+        setBannerUrl(data.bannerUrl || "");
       } catch (err) {
         setError(err.message || "Не удалось загрузить игру");
       } finally {
@@ -36,7 +39,7 @@ function GamePage() {
     }
 
     loadGame();
-  }, [id]);
+  }, [id, token]);
 
   async function handleUpdate(event) {
     event.preventDefault();
@@ -49,15 +52,15 @@ function GamePage() {
       formData.append("title", title);
       formData.append("description", description);
 
-      if (banner) {
-        formData.append("banner", banner);
+      if (bannerUrl) {
+        formData.append("bannerUrl", bannerUrl);
       }
 
-      const updatedGame = await updateGame(id, formData);
+      const updatedGame = await updateGame(id, formData, token);
       setGame(updatedGame);
       setTitle(updatedGame.title || "");
       setDescription(updatedGame.description || "");
-      setBanner(null);
+      setBannerUrl(updatedGame.bannerUrl || "");
       setIsEditing(false);
     } catch (err) {
       setError(err.message || "Не удалось обновить игру");
@@ -77,7 +80,7 @@ function GamePage() {
       setIsSubmitting(true);
       setError("");
 
-      await deleteGame(id);
+      await deleteGame(id, token);
       navigate("/games");
     } catch (err) {
       setError(err.message || "Не удалось удалить игру(к сожалению)");
@@ -107,40 +110,42 @@ function GamePage() {
           <h1 className="page-title">{game.title}</h1>
         </div>
 
-        <div className="card-actions">
-          {!isEditing ? (
-            <button
-              type="button"
-              className="button"
-              onClick={() => setIsEditing(true)}
-            >
-              Редактировать игру
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="button button-ghost"
-              onClick={() => {
-                setIsEditing(false);
-                setTitle(game.title || "");
-                setDescription(game.description || "");
-                setBanner(null);
-                setError("");
-              }}
-            >
-              Отмена
-            </button>
-          )}
+        {game.isOwner && (
+          <div className="card-actions">
+            {!isEditing ? (
+              <button
+                type="button"
+                className="button"
+                onClick={() => setIsEditing(true)}
+              >
+                Редактировать игру
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="button button-ghost"
+                onClick={() => {
+                  setIsEditing(false);
+                  setTitle(game.title || "");
+                  setDescription(game.description || "");
+                  setBannerUrl("");
+                  setError("");
+                }}
+              >
+                Отмена
+              </button>
+            )}
 
-          <button
-            type="button"
-            className="button button-danger"
-            onClick={handleDelete}
-            disabled={isSubmitting}
-          >
-            Удалить игру к чертям
-          </button>
-        </div>
+            <button
+              type="button"
+              className="button button-danger"
+              onClick={handleDelete}
+              disabled={isSubmitting}
+            >
+              Удалить игру к чертям
+            </button>
+          </div>
+        )}
       </div>
 
       {error ? <ErrorState message={error} /> : null}
@@ -192,11 +197,12 @@ function GamePage() {
                 Новый баннер
               </label>
               <input
-                id="banner"
-                className="file-input"
-                type="file"
-                accept="image/*"
-                onChange={(event) => setBanner(event.target.files[0] || null)}
+                id="bannerUrl"
+                className="input"
+                type="url"
+                placeholder="https://biographe.ru/char/shrek/"
+                value={bannerUrl}
+                onChange={(event) => setBannerUrl(event.target.value)}
               />
             </div>
 
@@ -216,7 +222,7 @@ function GamePage() {
                   setIsEditing(false);
                   setTitle(game.title || "");
                   setDescription(game.description || "");
-                  setBanner(null);
+                  setBannerUrl("");
                   setError("");
                 }}
               >
